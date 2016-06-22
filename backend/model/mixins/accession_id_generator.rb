@@ -13,11 +13,14 @@ module JHUAccessionIdGenerator
     !RequestContext.get(:is_high_priority)
   end
 
-
-  @id_0_generator = lambda {|json|
-    date = Date.parse(json['accession_date'])
-    "#{date.month > 6 ? date.year + 1 : date.year}"
-  }
+#20160622LJD: Construct year ranges instead of straight year.
+@id_0_generator = lambda {|json|
+  date = Date.parse(json['accession_date'])
+  start_year = date.month > 6 ? date.year : date.year - 1
+  end_year = date.month > 6 ? date.year + 1 : date.year
+  end_year_last_two = end_year.to_s.slice(-2, 2)
+  "#{start_year}-#{end_year_last_two}"
+}
 
 
   @id_1_generator = lambda {|json|
@@ -25,13 +28,14 @@ module JHUAccessionIdGenerator
   }
 
 
+#20160622LJD: Shorten id_2 to 3 digits.
   @id_2_generator = lambda {|json|
     sequence_name = "jhu_accession_#{json['id_0']}_#{json['id_1']}"
 
     seq = Sequence.get(sequence_name)
     seq = Sequence.get(sequence_name) if seq < 1
 
-    seq.to_s.rjust(4, '0')
+    seq.to_s.rjust(3, '0')
   }
 
 
