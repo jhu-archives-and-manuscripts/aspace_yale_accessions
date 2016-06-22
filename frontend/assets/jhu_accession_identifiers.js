@@ -29,9 +29,8 @@ AccessionIdentifiers.prototype.init = function () {
         self.disable(self.id_0);
         self.disable(self.id_2);
 
-
         if (!self.id_2.val().length) {
-            self.id_2.val('XXXX');
+            self.id_2.val('XXX');
         }
 
         var date = $('#accession_accession_date_').val();
