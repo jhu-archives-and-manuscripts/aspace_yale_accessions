@@ -1,6 +1,6 @@
 require 'date'
 
-module YaleAccessionIdGenerator
+module JHUAccessionIdGenerator
 
   def self.included(base)
     base.extend(ClassMethods)
@@ -26,7 +26,7 @@ module YaleAccessionIdGenerator
 
 
   @id_2_generator = lambda {|json|
-    sequence_name = "yale_accession_#{json['id_0']}_#{json['id_1']}"
+    sequence_name = "jhu_accession_#{json['id_0']}_#{json['id_1']}"
 
     seq = Sequence.get(sequence_name)
     seq = Sequence.get(sequence_name) if seq < 1
@@ -68,7 +68,7 @@ module YaleAccessionIdGenerator
   module ClassMethods
 
     def create_from_json(json, opts)
-      if !YaleAccessionIdGenerator.inside_import?
+      if !JHUAccessionIdGenerator.inside_import?
         json[:id_2] = nil
       end
 

@@ -1,4 +1,4 @@
-class YaleAccessionsController < ApplicationController
+class JhuAccessionsController < ApplicationController
 
   set_access_control "manage_repository" => [:department_list_update]
   set_access_control "view_repository" => [:department_list]
@@ -22,5 +22,5 @@ class YaleAccessionsController < ApplicationController
 
     render :json => department_list
   end
-    
+
 end

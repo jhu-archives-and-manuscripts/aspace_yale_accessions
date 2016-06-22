@@ -1,6 +1,6 @@
 <% if controller.controller_name == 'accessions' %>
-    <%= javascript_include_tag "#{@base_url}/assets/yale_accession_identifiers.js" %>
-    <%= stylesheet_link_tag "#{@base_url}/assets/yale_accessions.css" %>
+    <%= javascript_include_tag "#{@base_url}/assets/jhu_accession_identifiers.js" %>
+    <%= stylesheet_link_tag "#{@base_url}/assets/jhu_accessions.css" %>
 
     <% if ['edit', 'new', 'create'].include?(controller.action_name) %>
         <script>
@@ -12,7 +12,7 @@
 
 <% end %>
 
-<% if controller.controller_name == 'yale_accessions' %>
+<% if controller.controller_name == 'jhu_accessions' %>
 	<%= javascript_include_tag "#{@base_url}/assets/tagmanager/tagmanager.js" %>
 	<%= javascript_include_tag "#{@base_url}/assets/department_list.js" %>
 	<%= stylesheet_link_tag "#{@base_url}/assets/tagmanager/tagmanager.css" %>

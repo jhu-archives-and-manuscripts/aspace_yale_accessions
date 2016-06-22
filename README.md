@@ -1,35 +1,22 @@
-Yale Accessions README
-----------------------
+# jhu-auto-accession-numbers README
 
-# Getting Started
+## Background
 
-Unzip the release and move it to:
+Plugin forked from Hudson Molonglo/Yale's aspace_jhu_accessions.
 
-    /path/to/archivesspace/plugins
+JHU's desired modifications:
 
-Unzip it:
+* Simplify to only account for two collection types - manuscripts (ms) and university archives (ua).
+* Provide year span (2015-16) for first accession number part instead of single year.
+* Truncate third part of accession number to 3 digits (down from 4).
 
-    $ cd /path/to/archivesspace/plugins
-    $ unzip yale_accessions.zip -d yale_accessions
+## To install plugin:
 
-Enable the plugin by editing the file in `config/config.rb`:
-
-    AppConfig[:plugins] = ['some_plugin', 'yale_accessions']
-
-(Make sure you uncomment this line (i.e., remove the leading '#' if present))
-
-See also:
-
-  https://github.com/archivesspace/archivesspace/blob/master/plugins/README.md
-
-You will need to shutdown archivesspace and migrate the database:
-
-     $ cd /path/to/archivesspace
-     $ scripts/setup-database.sh
-
-See also:
-
-  https://github.com/archivesspace/archivesspace/blob/master/UPGRADING.md
+   1. Stop the application
+   2. Clone plugin into the archivesspace/plugins directory
+   3. Modify `config.rb` (in archivesspace/config) to list jhu-auto-accession-numbers
+   4. Run /archivesspace/scipts/setup-database.sh
+   5. Restart the application /archivesspace/archivesspace.sh
 
 # How it works
 
@@ -54,8 +41,8 @@ auto-generated IDs don't clash with existing ones.
 Suppose you have a department code called 'ycal'.  You can insert a
 new sequence starting from 100 for 2015 with some SQL:
 
-     insert into sequence (sequence_name, value) values ('yale_accession_2015_ycal', 100);
+     insert into sequence (sequence_name, value) values ('jhu_accession_2015_ycal', 100);
 
 Or, if that sequence already exists, update it:
 
-     update sequence set value = 100 where sequence_name = 'yale_accession_2015_ycal';
+     update sequence set value = 100 where sequence_name = 'jhu_accession_2015_ycal';

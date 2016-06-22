@@ -61,7 +61,7 @@ AccessionIdentifiers.prototype.init = function () {
 
 AccessionIdentifiers.prototype.load_department_codes = function () {
     $.ajax({
-        url: APP_PATH + "plugins/yale_accessions/department_codes",
+        url: APP_PATH + "plugins/jhu_accessions/department_codes",
         data: {},
         dataType: 'json',
         type: "GET",
