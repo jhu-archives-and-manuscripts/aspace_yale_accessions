@@ -29,27 +29,14 @@ AccessionIdentifiers.prototype.init = function () {
         self.disable(self.id_0);
         self.disable(self.id_2);
 
+        if (!self.id_0.val().length) {
+            self.id_0.val('YYYY-YY');
+        }
+
         if (!self.id_2.val().length) {
             self.id_2.val('XXX');
         }
 
-        var date = $('#accession_accession_date_').val();
-        if (date.length) {
-            self.update_fiscal_year(date);
-        }
-
-        // Whenever the accession date changes, update id_0 with the fiscal year
-        var $fld = $('input#accession_accession_date_');
-
-        $fld.change( function(event) {
-            self.update_fiscal_year($fld.val());
-        });
-
-        var $btn = $fld.next('button');
-
-        $btn.datepicker().on("changeDate", function() {
-            self.update_fiscal_year($fld.val());
-        });
     }
 
 
@@ -98,19 +85,4 @@ AccessionIdentifiers.prototype.load_department_codes = function () {
             }
         },
     });
-};
-
-
-AccessionIdentifiers.prototype.update_fiscal_year = function (date_string) {
-    if (!date_string) {
-        this.id_0.val('');
-        return;
-    }
-
-    var year = parseInt(date_string.substr(0, 4));
-    var month = parseInt(date_string.substr(5, 2));
-
-    var fyear = (month > 6 && year + 1) || year;
-
-    this.id_0.val(fyear);
 };
