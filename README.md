@@ -2,7 +2,7 @@
 
 ## Background
 
-Plugin forked from Hudson Molonglo/Yale's aspace_jhu_accessions.
+Plugin forked from Hudson Molonglo/Yale's <a href="https://github.com/hudmol/aspace_yale_accessions" title="aspace_yale_accessions">aspace_yale_accessions</a>.
 
 JHU's desired modifications:
 
